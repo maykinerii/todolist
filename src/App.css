@@ -1,0 +1,87 @@
+body {
+  font-family: 'Roboto Slab', sans-serif;
+  color: #212427;
+  background-color: #5E1B89; /* fallback color */
+  background-image: linear-gradient(to bottom right, #F4512C, #5E1B89);
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+.gradient-background {
+  background-color: #5E1B89; /* fallback color */
+  background-image: linear-gradient(to bottom right, #F4512C, #5E1B89); /* Gradient from Striking Orange to Lawful Purple */
+  width: 100%;
+  max-width: 800px;
+  border-radius: 0.25rem;
+  padding: 1rem;
+}
+/* Style for the input/edit field */
+.input-editTask {
+  border: none;
+  border-bottom: 1px solid lightgrey;
+  outline: none;
+  background: none;
+  color: #212427;
+}
+.saveButton, .DeleteYes {
+  background-color: #F4512C;
+  border: none;
+  color: #F8FFFE;
+  padding: 0.5rem 1rem;
+}
+
+.saveButton:hover, .DeleteYes:hover {
+  background-color: rgba(244, 81, 44, 0.8); /* Reduce opacity on hover */
+  color: #F8FFFE; /* Font color */
+}
+.cancelButton, .DeleteNo {
+  background-color: #5E1B89;
+  border: none;
+  color: #F8FFFE;
+  padding: 0.5rem 1rem;
+}
+
+.cancelButton:hover, .DeleteNo:hover {
+  background-color: rgba(94, 27, 137, 0.8); /* Reduce opacity on hover */
+  color: #F8FFFE; /* Font color */
+}
