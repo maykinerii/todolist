@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import DeleteConfirmation from "./DeleteConfirmation"; // Import the delete confirmation modal component
-import DeleteAllConfirmation from "./DeleteAllConfirmation"; // Import the delete confirmation modal component
+import DeleteConfirmation from "../components/DeleteConfirmation"; // Import the delete confirmation modal component
+import DeleteAllConfirmation from "../components/DeleteAllConfirmation"; // Import the delete confirmation modal component
 
 
 export default function MyTodoList() {
@@ -38,7 +38,7 @@ export default function MyTodoList() {
                             <h5 className="modal-title">{task.title}</h5>
                             <button type="button" className="btn-close" onClick={onClose} aria-label="Close"></button>
                         </div>
-                        <div className="modal-body">
+                        <div className="modal-body textarea-container">
                             <textarea
                                 ref={textAreaRef} // Assign the ref to the textarea element
                                 className="form-control"
@@ -115,6 +115,11 @@ export default function MyTodoList() {
     }
 
     function updateTask(index) {
+        if (!editTask.trim() || !editDescription.trim()) {
+            alert("Please provide a valid task and description");
+            return;
+        }
+    
         let newTodos = [...todos];
         newTodos[index].task = editTask;
         newTodos[index].description = editDescription;
@@ -123,7 +128,7 @@ export default function MyTodoList() {
         setEditTask("");
         setEditDescription("");
     }
-
+    
     function cancelEdit() {
         setEditingIndex(-1);
         setEditTask("");
@@ -173,7 +178,7 @@ export default function MyTodoList() {
     }
     return (
         <div className="container my-5">
-            <div className="mx-auto rounded border p-4 gradient-background">
+            <div className="mx-auto rounded-4 p-4 shadow p-3 mb-5 container-background">
                 <h2 className="text-white text-center mb-5 fw-bold">My To-Do List</h2>
 
                 <form className="row g-2" onSubmit={handleSubmit}>
@@ -181,7 +186,7 @@ export default function MyTodoList() {
                         <input className="form-control" placeholder="Add New Task" name="task" />
                     </div>
                     <div className="col-12 col-md-2">
-                        <button className="btn btn-outline-light" type="submit">Add Task</button>
+                        <button className="btn btn-outline-light btn-custom-gradient" type="submit">Add Task</button>
                     </div>
                     <div className="col-12 col-md-8">
                         <textarea className="form-control" placeholder="Task's Description" name="description" style={{ width: "100%" }} />
@@ -190,36 +195,37 @@ export default function MyTodoList() {
 
                 <div className="row g-2" style={{ marginTop: "10px" }}>
                     <div className="col">
-                        <button className="btn btn-outline-light" type="button" onClick={handleDeleteAllConfirmation} style={{ fontSize: "14px", paddingLeft: "45px", paddingRight: "40px" }}>Delete All Task</button>
+                        <button className="btn btn-outline-light btn-custom-gradient" type="button" onClick={handleDeleteAllConfirmation} style={{ fontSize: "14px", paddingLeft: "45px", paddingRight: "40px" }}>Delete All Task</button>
                     </div>
                     <div className="col">
-                        <button className="btn btn-outline-light" type="button" onClick={markAllTasksComplete} style={{ fontSize: "14px" }}>Mark All As Complete</button>
+                        <button className="btn btn-outline-light btn-custom-gradient" type="button" onClick={markAllTasksComplete} style={{ fontSize: "14px" }}>Mark All As Complete</button>
                     </div>
                     <div className="col">
-                        <button className="btn btn-outline-light" type="button" onClick={markAllTasksIncomplete} style={{ fontSize: "14px" }}>Mark All As Incomplete</button>
+                        <button className="btn btn-outline-light btn-custom-gradient" type="button" onClick={markAllTasksIncomplete} style={{ fontSize: "14px" }}>Mark All As Incomplete</button>
                     </div>
                     <div className="col">
-                        <button className="btn btn-outline-light" type="button" onClick={removeAllCompletedTasks} style={{ fontSize: "14px" }}>Remove All Completed</button>
+                        <button className="btn btn-outline-light btn-custom-gradient" type="button" onClick={removeAllCompletedTasks} style={{ fontSize: "14px" }}>Remove All Completed</button>
                     </div>
                 </div>
 
                 <div className="row text-white fw-bold" style={{ marginTop: "12px" }}>
-                    <div className="col">Date Added</div>
                     <div className="col">Tasks</div>
+                    <div className="col">Date Added</div>
                     <div className="col">Actions</div>
                 </div>
-
-                {todos.length === 0 ? (
-                    <div className="text-center text-white mt-3">You don't have any tasks</div>
-                ) : (
-                    todos.map((todo, index) => (
-                        <div key={index} className="d-flex flex-row align-items-center rounded mt-4 p-2" style={{ backgroundColor: todo.completed ? "DarkGray" : "LightGray", textDecoration: todo.completed ? 'line-through' : 'none' }}>
-                            <div className="col">{new Date(todo.date).toLocaleString()}</div>
+        <div className="task-container">
+            {todos.length === 0 ? (
+            <div className="text-center text-white mt-3">You don't have any tasks</div>
+            ) : (
+            todos.map((todo, index) => (
+                <div key={index} className="d-flex flex-row align-items-center rounded mt-3 p-2" style={{ backgroundColor: todo.completed ? "DarkGray" : "LightGray", textDecoration: todo.completed ? 'line-through' : 'none' }}>
+                            
                             <div className="col">{editingIndex === index ? (
                                 <input type="text" value={editTask} onChange={(e) => setEditTask(e.target.value)} className="input-editTask" />
                             ) : (
                                 todo.task
                             )}</div>
+                            <div className="col">{new Date(todo.date).toLocaleString()}</div>
                             <div className="col">
                                 {editingIndex === index ? (
                                     <>
@@ -228,17 +234,17 @@ export default function MyTodoList() {
                                     </>
                                 ) : (
                                     <>
-                                        <i className={"h5 me-2 " + (todo.completed ? "bi bi-check2-square" : "bi bi-square")} style={{ cursor: "pointer" }} onClick={() => changeTaskStatus(index)}></i>
-                                        <i className="bi bi-eye h5 me-2" style={{ cursor: "pointer" }} onClick={() => handleView(index)}></i>
-                                        <i className="bi bi-pencil-square h5 me-2" style={{ cursor: "pointer" }} onClick={() => handleEdit(index)}></i>
-                                        <i className="bi bi-trash h5" style={{ cursor: "pointer" }} onClick={() => handleDeleteConfirmation(todo.id)}></i>
+                                        <i className={"h5 me-2 action-btn " + (todo.completed ? "bi bi-check2-square" : "bi bi-square")} onClick={() => changeTaskStatus(index)} title={todo.completed ? "Unmark Task" : "Mark Task"}></i>
+                                        <i className="bi bi-eye h5 me-2 action-btn" onClick={() => handleView(index)} title="View Description"></i>
+                                        <i className="bi bi-pencil-square h5 me-2 action-btn" onClick={() => handleEdit(index)} title="Edit Task Title"></i>
+                                        <i className="bi bi-trash h5 action-btn" onClick={() => handleDeleteConfirmation(todo.id)} title="Delete Task"></i>
                                     </>
                                 )}
                             </div>
                         </div>
                     ))
                 )}
-
+        </div>
                 {/* show success modal when description's successfully saved */}
                 {showSuccessModal && (
                     <div className="modal show" tabIndex="-1" role="dialog" style={{ display: "block" }}>

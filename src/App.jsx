@@ -1,5 +1,5 @@
 import './App.css';
-import MyTodoList from './MyTodoList'; // Use uppercase 'TodoList' here
+import MyTodoList from './components/MyTodoList'; // Use uppercase 'TodoList' here
 
 function App() {
   return (

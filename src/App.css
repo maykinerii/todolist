@@ -1,8 +1,32 @@
 body {
   font-family: 'Roboto Slab', sans-serif;
   color: #212427;
-  background-color: #5E1B89; /* fallback color */
+  background-color: #F8FFFE;
+  /* background-color: #5E1B89; */
+   /* fallback color */
+  /* background-image: linear-gradient(to bottom right, #F4512C, #5E1B89); */
+}
+
+.task-container {
+  max-height: 400px; /* Set a maximum height for the task container */
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+/* Add this CSS to your stylesheet or CSS file */
+.btn-custom-gradient {
   background-image: linear-gradient(to bottom right, #F4512C, #5E1B89);
+  color: white;
+  border-color: transparent;
+}
+
+.btn-custom-gradient:hover {
+  background-image: linear-gradient(to bottom right, #F4512C, #5E1B89);
+  opacity: 0.8;
+  color: #F8FFFE;
+}
+
+.action-btn {
+  cursor: pointer;
 }
 
 #root {
@@ -47,14 +71,14 @@ body {
 .read-the-docs {
   color: #888;
 }
-.gradient-background {
-  background-color: #5E1B89; /* fallback color */
-  background-image: linear-gradient(to bottom right, #F4512C, #5E1B89); /* Gradient from Striking Orange to Lawful Purple */
+
+.container-background {
+  background: linear-gradient(to bottom, #5E1B89, #9D71BC);
   width: 100%;
   max-width: 800px;
-  border-radius: 0.25rem;
   padding: 1rem;
 }
+
 /* Style for the input/edit field */
 .input-editTask {
   border: none;
@@ -85,3 +109,19 @@ body {
   background-color: rgba(94, 27, 137, 0.8); /* Reduce opacity on hover */
   color: #F8FFFE; /* Font color */
 }
+/* Enlarge the ViewModal*/
+.modal-dialog {
+  max-width: 600px;
+}
+
+.textarea-container {
+  height: 200px; /* Set a specific height for the text area */
+  overflow-y: auto; /* Enable vertical scrolling if content exceeds the height */
+}
+
+.textarea-container textarea {
+  height: 100%; /* Make the text area fill the container height */
+  resize: vertical; /* Allow vertical resizing of the text area */
+}
+
+
