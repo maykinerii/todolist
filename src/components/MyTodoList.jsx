@@ -15,21 +15,29 @@ export default function MyTodoList() {
 
     const ViewModal = ({ isOpen, onClose, task, onEditDescription, onSaveDescription }) => {
         const textAreaRef = useRef(null); // Add useRef hook
-
+    
         useEffect(() => {
             if (isOpen && textAreaRef.current) {
                 textAreaRef.current.focus(); // Set focus when the modal is opened
                 const length = task.description.length;
                 textAreaRef.current.setSelectionRange(length, length); // Set cursor position at the end of the text
             }
-        }, [isOpen]);
-
+        }, [isOpen, task.description]);
+    
         const handleSave = () => {
-            onSaveDescription(task.id, task.title, task.description); // Pass task id, title, and updated description to onSaveDescription function
+            const trimmedDescription = task.description.trim(); // Trim the description
+        
+            if (!trimmedDescription) {
+                alert("Please provide a description"); // Show alert if the description is empty
+                return;
+            }
+        
+            onSaveDescription(task.id, task.title, trimmedDescription); // Pass task id, title, and trimmed description to onSaveDescription function
             onClose(); // Close the modal after saving
             setShowSuccessModal(true); // Show success modal
         };
-
+        
+    
         return (
             <div className={`modal ${isOpen ? 'show' : ''}`} tabIndex="-1" role="dialog" style={{ display: isOpen ? 'block' : 'none' }}>
                 <div className="modal-dialog modal-dialog-centered" role="document">
@@ -56,7 +64,7 @@ export default function MyTodoList() {
             </div>
         );
     };
-
+    
     function getStoredTodos() {
         let data = localStorage.getItem("todos");
         let parsedData = JSON.parse(data);
