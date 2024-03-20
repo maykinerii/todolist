@@ -136,6 +136,7 @@ body {
   background-color: rgba(94, 27, 137, 0.8); /* Reduce opacity on hover */
   color: #F8FFFE; /* Font color */
 }
+
 /* Enlarge the ViewModal*/
 .modal-dialog {
   max-width: 600px;

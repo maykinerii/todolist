@@ -236,8 +236,8 @@ export default function MyTodoList() {
                             <div className="col">
                                 {editingIndex === index ? (
                                     <>
-                                        <button className="btn me-2 saveButton" onClick={() => updateTask(index)}>Save</button>
-                                        <button className="btn cancelButton" onClick={() => cancelEdit()}>Cancel</button>
+                                        <button className="btn btn-outline-primary me-2 saveButton" onClick={() => updateTask(index)}>Save</button>
+                                        <button className="btn btn-outline-danger cancelButton" onClick={() => cancelEdit()}>Cancel</button>
                                     </>
                                 ) : (
                                     <>
