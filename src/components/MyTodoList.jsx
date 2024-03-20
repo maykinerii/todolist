@@ -194,7 +194,7 @@ export default function MyTodoList() {
                         <input className="form-control" placeholder="Add New Task" name="task" />
                     </div>
                     <div className="col-12 col-md-2">
-                        <button className="btn btn-outline-light btn-custom-gradient" type="submit">Add Task</button>
+                        <button className="btn btn-outline-light btn-custom addTask" type="submit">Add Task</button>
                     </div>
                     <div className="col-12 col-md-8">
                         <textarea className="form-control" placeholder="Task's Description" name="description" style={{ width: "100%" }} />
@@ -203,16 +203,16 @@ export default function MyTodoList() {
 
                 <div className="row g-2" style={{ marginTop: "10px" }}>
                     <div className="col">
-                        <button className="btn btn-outline-light btn-custom-gradient" type="button" onClick={handleDeleteAllConfirmation} style={{ fontSize: "14px", paddingLeft: "45px", paddingRight: "40px" }}>Delete All Task</button>
+                        <button className="btn btn-outline-light btn-custom delete" type="button" onClick={handleDeleteAllConfirmation} style={{ fontSize: "14px", paddingLeft: "45px", paddingRight: "40px" }}>Delete All Task</button>
                     </div>
                     <div className="col">
-                        <button className="btn btn-outline-light btn-custom-gradient" type="button" onClick={markAllTasksComplete} style={{ fontSize: "14px" }}>Mark All As Complete</button>
+                        <button className="btn btn-outline-light btn-custom complete" type="button" onClick={markAllTasksComplete} style={{ fontSize: "14px" }}>Mark All As Complete</button>
                     </div>
                     <div className="col">
-                        <button className="btn btn-outline-light btn-custom-gradient" type="button" onClick={markAllTasksIncomplete} style={{ fontSize: "14px" }}>Mark All As Incomplete</button>
+                        <button className="btn btn-outline-light btn-custom incomplete" type="button" onClick={markAllTasksIncomplete} style={{ fontSize: "14px" }}>Mark All As Incomplete</button>
                     </div>
                     <div className="col">
-                        <button className="btn btn-outline-light btn-custom-gradient" type="button" onClick={removeAllCompletedTasks} style={{ fontSize: "14px" }}>Remove All Completed</button>
+                        <button className="btn btn-outline-light btn-custom remove" type="button" onClick={removeAllCompletedTasks} style={{ fontSize: "14px" }}>Remove All Completed</button>
                     </div>
                 </div>
 

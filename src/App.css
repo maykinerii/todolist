@@ -12,19 +12,6 @@ body {
   overflow-y: auto; /* Enable vertical scrolling */
 }
 
-/* Add this CSS to your stylesheet or CSS file */
-.btn-custom-gradient {
-  background-image: linear-gradient(to bottom right, #F4512C, #5E1B89);
-  color: white;
-  border-color: transparent;
-}
-
-.btn-custom-gradient:hover {
-  background-image: linear-gradient(to bottom right, #F4512C, #5E1B89);
-  opacity: 0.8;
-  color: #F8FFFE;
-}
-
 .action-btn {
   cursor: pointer;
 }
@@ -35,7 +22,7 @@ body {
   padding: 2rem;
   text-align: center;
 }
-
+/* 
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -47,7 +34,7 @@ body {
 }
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
-}
+} */
 
 @keyframes logo-spin {
   from {
@@ -63,17 +50,55 @@ body {
     animation: logo-spin infinite 20s linear;
   }
 }
-
+/* 
 .card {
   padding: 2em;
 }
 
 .read-the-docs {
   color: #888;
+} */
+
+.btn-custom:hover {
+  cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+ /* Change background color for Buttons on hover */
+ .btn-custom.addTask:hover {
+  color: #212427;
+  border: none;
+  background-color: #F8FFFE; 
+
+}
+
+.btn-custom.delete:hover {
+  color: #F8FFFE;
+  border: none;
+  background-color: #5E1B89; 
+
+}
+
+.btn-custom.complete:hover {
+  color: #F8FFFE;
+  border: none;
+  background-color: #FF7F4D;
+}
+
+.btn-custom.incomplete:hover {
+  color: #F8FFFE;
+  border: none;
+  background-color: #F4512C;
+}
+
+.btn-custom.remove:hover {
+  color: #F8FFFE;
+  border: none;
+  background-color: #9D71BC;
 }
 
 .container-background {
-  background: linear-gradient(to bottom, #5E1B89, #9D71BC);
+  /* background: linear-gradient(to bottom, #5E1B89, #9D71BC); */
+  background: linear-gradient(to bottom right, #F4512C, #5E1B89);
   width: 100%;
   max-width: 800px;
   padding: 1rem;
@@ -87,6 +112,7 @@ body {
   background: none;
   color: #212427;
 }
+
 .saveButton, .DeleteYes {
   background-color: #F4512C;
   border: none;
@@ -98,6 +124,7 @@ body {
   background-color: rgba(244, 81, 44, 0.8); /* Reduce opacity on hover */
   color: #F8FFFE; /* Font color */
 }
+
 .cancelButton, .DeleteNo {
   background-color: #5E1B89;
   border: none;
