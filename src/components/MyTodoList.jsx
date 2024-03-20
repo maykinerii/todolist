@@ -11,6 +11,8 @@ export default function MyTodoList() {
     const [modalOpen, setModalOpen] = useState(false);
     const [viewTask, setViewTask] = useState({ id: "", title: "", description: "" });
     const [showSuccessModal, setShowSuccessModal] = useState(false);
+    const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+    const [taskToDelete, setTaskToDelete] = useState(null);
     const [deleteAllModalOpen, setDeleteAllModalOpen] = useState(false);
 
     const ViewModal = ({ isOpen, onClose, task, onEditDescription, onSaveDescription }) => {
@@ -102,9 +104,6 @@ export default function MyTodoList() {
         newTodos.splice(index, 1);
         setTodos(newTodos);
     }
-    
-    const [deleteModalOpen, setDeleteModalOpen] = useState(false);
-    const [taskToDelete, setTaskToDelete] = useState(null);
 
     function handleDeleteConfirmation(taskId) {
         setTaskToDelete(taskId);
@@ -237,8 +236,8 @@ export default function MyTodoList() {
                             <div className="col">
                                 {editingIndex === index ? (
                                     <>
-                                        <button className="btn btn-outline-primary me-2 saveButton" onClick={() => updateTask(index)}>Save</button>
-                                        <button className="btn btn-outline-danger cancelButton" onClick={() => cancelEdit()}>Cancel</button>
+                                        <button className="btn me-2 saveButton" onClick={() => updateTask(index)}>Save</button>
+                                        <button className="btn cancelButton" onClick={() => cancelEdit()}>Cancel</button>
                                     </>
                                 ) : (
                                     <>
